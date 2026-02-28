@@ -3,9 +3,9 @@ import { RouterLink, RouterView } from "vue-router"
 
 const nav = [
   { to: "/", label: "Inicio" },
-  { to: "/projects", label: "Proyectos" },
-  { to: "/about", label: "Sobre mí" },
-  { to: "/contact", label: "Contacto" },
+  { to: "/proyectos", label: "Proyectos" },
+  { to: "/sobremi", label: "Sobre mí" },
+  { to: "/contacto", label: "Contacto" },
 ]
 </script>
 

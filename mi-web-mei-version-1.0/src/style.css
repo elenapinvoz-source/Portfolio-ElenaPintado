@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@font-face {
+  font-family: principal;
+  src: url(../fonts/MonumentExtecded-Regular.woff2);
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
