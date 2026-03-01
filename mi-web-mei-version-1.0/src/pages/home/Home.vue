@@ -1,79 +1,80 @@
 <script lang="ts" setup>
+import { RouterLink } from "vue-router";
 </script>
 
 <template>
   <section class="poster-wrapper">
-    <div class="poster">
-      <h1 class="titulo-portafolio" aria-label="PORTAFOLIO">
-        <span>PORTA</span>
-        <span>FOLIO</span>
-      </h1>
+    <img
+      class="hero-img"
+      src="/imagenes/Home/EPV TITU.png"
+      alt="Portfolio"
+    />
 
-      <p class="intro-text">
-        <span>ELENA PINTADO</span>
-        <span>DISEÑADORA GRÁFICA</span>
-      </p>
+   <RouterLink to="/sobremi" class="name-pill">
+      ELENA PINTADO
+    </RouterLink>
 
-
+    <div class="home-roles">
+        <span>Diseñadora gráfica</span>
+        <span>Fotógrafa</span>
+        <span>Ilustradora</span>
     </div>
+
   </section>
 </template>
 
 <style scoped>
 .poster-wrapper {
-  width: 100vw;
   min-height: 100vh;
-  margin: 0;
-  padding: 0;
-}
-
-.poster {
-  position: relative;
-  overflow: hidden;
   background: #000;
-  min-height: 100vh;
-  padding: clamp(0.6rem, 1.6vw, 1.4rem);
-}
-
-.titulo-portafolio {
-  font-size: clamp(9rem, 33vw, 30rem); /* mas grande */
-  line-height: 1;                      /* mas junto entre lineas */
-  letter-spacing: -0.02em;                /* letras un poco mas compactas */
-  justify-content: center;                /* quita separacion vertical extrema */
-  gap: 0.28em;                            /* separacion controlada entre PORTA/FOLIO */
-}
-
-.titulo-portafolio span {
-  display: block;
-}
-
-.intro-text {
-  position: absolute;
-  left: clamp(1rem, 7vw, 4rem);
-  top: 50%;
-  transform: translateY(-50%);
-  margin: 0;
   display: flex;
-  flex-direction: column;
-  gap: 0.12em;
-
-  font-size: clamp(2rem, 5.6vw, 5.2rem);
-  line-height: 0.86;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.01em;
-  color: #d9f227;
-
-  z-index: 2;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
-.intro-text span {
-  display: block;
+.hero-img {
+  width: 1600px;
+  max-width: none;
+  height: auto;
+  margin-top: -200px;
+  margin-left: -100px;
+  }
+
+.name-pill {
+  position: absolute;
+  margin-top: 40px;          /* baja/sube */
+  margin-left: 0px;       /* mueve izquierda/derecha */
+  background: #d9f227;
+  color: #111;
+  border-radius: 9999px;
+  padding: 1rem 2.6rem;   /* más pequeño */
+  font-size: 2rem;         /* más pequeño */
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
 }
 
+.name-pill:hover {
+  transform: translateX(-50%) scale(1.03);
+  filter: brightness(1.03);
+}
+
+.home-roles {
+  position: absolute;
+  left: 60px;
+  right: 60px;
+  bottom: 80px;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
 
 
 </style>
+
 
 
 
