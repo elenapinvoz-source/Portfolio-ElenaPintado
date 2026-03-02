@@ -3,7 +3,7 @@
 
 @font-face {
   font-family: principal;
-  src: url(../fonts/MonumentExtecded-Regular.woff2);
+  src: url(../fonts/FFF-Acid-Grotesk-Regular.ttf) format("truetype");
 }
 
 @custom-variant dark (&:is(.dark *));
@@ -121,5 +121,9 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: "principal", sans-serif;
   }
 }
+
+
+

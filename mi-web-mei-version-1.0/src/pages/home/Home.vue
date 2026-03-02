@@ -15,9 +15,9 @@ import { RouterLink } from "vue-router";
     </RouterLink>
 
     <div class="home-roles">
-        <span>Diseñadora gráfica</span>
-        <span>Fotógrafa</span>
-        <span>Ilustradora</span>
+        <span>DISEÑADORA GRÁFICA</span>
+        <span>FOTOGRÁFA</span>
+        <span>ILUSTRADORA</span>
     </div>
 
   </section>
@@ -37,26 +37,25 @@ import { RouterLink } from "vue-router";
   width: 1600px;
   max-width: none;
   height: auto;
-  margin-top: -200px;
+  margin-top: -230px;
   margin-left: -100px;
   }
 
 .name-pill {
   position: absolute;
-  margin-top: 40px;          /* baja/sube */
+  margin-top: 50px;          /* baja/sube */
   margin-left: 0px;       /* mueve izquierda/derecha */
   background: #d9f227;
   color: #111;
   border-radius: 9999px;
   padding: 1rem 2.6rem;   /* más pequeño */
   font-size: 2rem;         /* más pequeño */
-  font-weight: 600;
+  font-weight: 300;
   line-height: 1;
   text-decoration: none;
 }
 
 .name-pill:hover {
-  transform: translateX(-50%) scale(1.03);
   filter: brightness(1.03);
 }
 
@@ -64,12 +63,18 @@ import { RouterLink } from "vue-router";
   position: absolute;
   left: 60px;
   right: 60px;
-  bottom: 80px;
+  bottom: 40px;
   display: flex;
   justify-content: space-between;
-  color: #fff;
-  font-size: 1.05rem;
-  font-weight: 500;
+  color: #5049a9;
+  font-size: 1.6rem;
+  font-weight: 300;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.home-roles span:hover {
+  color: #d9f227; /* verde lima */
 }
 
 
