@@ -3,83 +3,164 @@ import { RouterLink } from "vue-router";
 </script>
 
 <template>
-  <section class="poster-wrapper">
-    <img
-      class="hero-img"
-      src="/imagenes/Home/EPV TITU.png"
-      alt="Portfolio"
-    />
+  <section class="home-page">
+    <section class="home-meta">
+      <p class="roles">
+        ILUSTRADORA<br />
+        FOTOGRAFA<br />
+        DISENADORA GRAFICA
+      </p>
+      <span class="year">2026</span>
+    </section>
 
-   <RouterLink to="/sobremi" class="name-pill">
-      ELENA PINTADO
-    </RouterLink>
+    <img src="/imagenes/Home/gif6.gif" alt="Portfolio 1" class="portfolio-gif" />
 
-    <div class="home-roles">
-        <span>DISEÑADORA GRÁFICA</span>
-        <span>FOTOGRÁFA</span>
-        <span>ILUSTRADORA</span>
-    </div>
+  <section class="home-cta-section">
+    <section class="home-cta">
+      <p class="cta-line-1">¿BUSCABAS ALGO DIFERENTE?</p>
+      <p class="cta-line-2">PUES YA ME HAS ENCONTRADO</p>
+      <RouterLink to="/contacto" class="cta-button">¿HÁBLAMOS?</RouterLink>
+    </section>
+  </section>
+
+
 
   </section>
 </template>
 
 <style scoped>
-.poster-wrapper {
+.home-page {
   min-height: 100vh;
-  background: #000;
+  background: #fff;
+  color: #111;
+  padding: 18px 26px 24px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+  flex-direction: column;
 }
 
-.hero-img {
-  width: 1600px;
-  max-width: none;
+.home-header {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  column-gap: 16px;
+}
+
+.brand {
+  justify-self: start;
+  color: #111;
+  text-decoration: none;
+  font-size: 1.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.menu-pill {
+  justify-self: center;
+  border: 2px solid #111;
+  border-radius: 9999px;
+  min-height: 56px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.menu-link {
+  color: #111;
+  text-decoration: none;
+  font-size: 1.55rem;
+  line-height: 1;
+}
+
+.contact-btn {
+  justify-self: end;
+  background: #111;
+  color: #fff;
+  border-radius: 9999px;
+  min-height: 56px;
+  padding: 0 22px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.home-meta {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+}
+
+.roles {
+  margin: 0;
+  font-size: 1.45rem;
+  line-height: 1.1;
+  max-width: 270px;
+}
+
+.year {
+  justify-self: center;
+  font-size: 2rem;
+}
+
+.portfolio-gif {
+  width: 100%;
+  max-width: 1600px; /* mas grande */
   height: auto;
-  margin-top: -230px;
-  margin-left: -100px;
+  margin-top: 130px;          /* mas arriba */
+   align-items: center;
+}
+
+.home-cta-section {
+  min-height: 100vh;            /* una pantalla entera */
+  display: flex;
+  align-items: center;          /* centrado vertical */
+  justify-content: center;      /* centrado horizontal */
+  padding-top: 170px
+}
+
+.home-cta {
+  text-align: center;
+}
+
+.cta-line-1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-style: italic;
+  line-height: 1.05;
+}
+
+.cta-line-2 {
+  margin: 6px 0 0;
+  font-size: clamp(2.2rem, 4.2vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.cta-button {
+  margin: 26px auto 0;
+  background: #111;
+  color: #fff;
+  border-radius: 9999px;
+  min-height: 56px;
+  padding: 0 22px;
+  font-size: 1.2rem;
+  font-weight: 400;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+
+@media (max-width: 980px) {
+  .home-meta {
+    grid-template-columns: 1fr;
+    row-gap: 16px;
   }
 
-.name-pill {
-  position: absolute;
-  margin-top: 50px;          /* baja/sube */
-  margin-left: 0px;       /* mueve izquierda/derecha */
-  background: #d9f227;
-  color: #111;
-  border-radius: 9999px;
-  padding: 1rem 2.6rem;   /* más pequeño */
-  font-size: 2rem;         /* más pequeño */
-  font-weight: 300;
-  line-height: 1;
-  text-decoration: none;
+  .year {
+    justify-self: start;
+  }
 }
-
-.name-pill:hover {
-  filter: brightness(1.03);
-}
-
-.home-roles {
-  position: absolute;
-  left: 60px;
-  right: 60px;
-  bottom: 40px;
-  display: flex;
-  justify-content: space-between;
-  color: #5049a9;
-  font-size: 1.6rem;
-  font-weight: 300;
-  transition: color 0.2s ease;
-  cursor: pointer;
-}
-
-.home-roles span:hover {
-  color: #d9f227; /* verde lima */
-}
-
-
 </style>
-
-
-
-
