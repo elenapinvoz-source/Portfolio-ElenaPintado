@@ -152,12 +152,12 @@ const email = "elenapinvoz@gmail.com";
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding: 10px 16px;
+  padding: 20px 32px;
 }
 
 .footer-copy {
   margin: 0;
-  font-size: 0.72rem;
+  font-size: 0.85rem;
 }
 
 .footer-links {
@@ -172,7 +172,7 @@ const email = "elenapinvoz@gmail.com";
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.72rem;
+  font-size: 0.85rem;
 }
 
 .footer-link:hover {
