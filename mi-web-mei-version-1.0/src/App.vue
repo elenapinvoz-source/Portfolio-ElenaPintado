@@ -1,11 +1,17 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
+import { Instagram, Mail } from "lucide-vue-next";
 
 const mainNav = [
   { to: "/", label: "INICIO" },
   { to: "/sobremi", label: "SOBRE MI" },
   { to: "/proyectos", label: "PROYECTOS" },
 ];
+
+const instagramUser = "@elsbydesign";
+const instagramUrl = "https://instagram.com/elsbydesign";
+const email = "elenapinvoz@gmail.com";
+
 </script>
 
 <template>
@@ -32,8 +38,27 @@ const mainNav = [
     </main>
 
     <footer class="app-footer">
-      © 2026 - Elena Pintado
+      <p class="footer-copy">© 2026 - Elena Pintado</p>
+
+      <div class="footer-links">
+        <a
+          class="footer-link"
+          :href="instagramUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+        >
+          <Instagram :size="14" />
+          <span>{{ instagramUser }}</span>
+        </a>
+
+        <a class="footer-link" :href="`mailto:${email}`" aria-label="Correo">
+          <Mail :size="14" />
+          <span>{{ email }}</span>
+        </a>
+      </div>
     </footer>
+
   </div>
 </template>
 
@@ -106,5 +131,60 @@ const mainNav = [
     justify-self: start;
   }
 }
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  color: #111;
+}
+
+.app-main {
+  flex: 1;
+}
+
+.app-footer {
+  background: #111;
+  color: #fff;
+  border-top: 1px solid #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 10px 16px;
+}
+
+.footer-copy {
+  margin: 0;
+  font-size: 0.72rem;
+}
+
+.footer-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+}
+
+.footer-link:hover {
+  opacity: 0.78;
+}
+
+@media (max-width: 980px) {
+  .app-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 
 </style>

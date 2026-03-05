@@ -1,9 +1,54 @@
 <script lang="ts" setup>
 import { RouterLink } from "vue-router";
+import { ref } from "vue";
+
+type HoverImg = { id: number; x: number; y: number; src: string };
+
+const hoverImgs = ref<HoverImg[]>([]);
+const pool = [
+  "/imagenes/Home/PORTFOLIO 1.png",
+  "/imagenes/Home/PORTFOLIO 1.png",
+  "/imagenes/Home/PORTFOLIO 1.png",
+  "/imagenes/Home/PORTFOLIO 1.png",
+  "/imagenes/Home/PORTFOLIO 1.png",
+
+  ];
+
+let last = 0;
+
+function onCtaMove(e: MouseEvent) {
+  const now = Date.now();
+  if (now - last < 90) return; // controla frecuencia
+  last = now;
+
+  const el = e.currentTarget as HTMLElement;
+  const rect = el.getBoundingClientRect();
+
+  const img: HoverImg = {
+    id: now + Math.random(),
+    x: e.clientX - rect.left,
+    y: e.clientY - rect.top,
+    src: pool[Math.floor(Math.random() * pool.length)],
+  };
+
+  hoverImgs.value.push(img);
+  setTimeout(() => {
+    hoverImgs.value = hoverImgs.value.filter((i) => i.id !== img.id);
+  }, 900);
+}
 </script>
 
 <template>
-  <section class="home-page">
+  <section class="home-page" @mousemove="onCtaMove">
+    <img
+      v-for="img in hoverImgs"
+      :key="img.id"
+      :src="img.src"
+      class="hover-trail-img"
+      :style="{ left: `${img.x}px`, top: `${img.y}px` }"
+      alt=""
+    />
+
     <section class="home-meta">
       <p class="roles">
         ILUSTRADORA<br />
@@ -15,18 +60,16 @@ import { RouterLink } from "vue-router";
 
     <img src="/imagenes/Home/gif6.gif" alt="Portfolio 1" class="portfolio-gif" />
 
-  <section class="home-cta-section">
-    <section class="home-cta">
-      <p class="cta-line-1">¿BUSCABAS ALGO DIFERENTE?</p>
-      <p class="cta-line-2">PUES YA ME HAS ENCONTRADO</p>
-      <RouterLink to="/contacto" class="cta-button">¿HÁBLAMOS?</RouterLink>
+    <section class="home-cta-section">
+      <section class="home-cta">
+        <p class="cta-line-1">¿BUSCABAS ALGO DIFERENTE?</p>
+        <p class="cta-line-2">PUES YA ME HAS ENCONTRADO</p>
+        <RouterLink to="/contacto" class="cta-button">¿HABLAMOS?</RouterLink>
+      </section>
     </section>
   </section>
-
-
-
-  </section>
 </template>
+
 
 <style scoped>
 .home-page {
@@ -36,6 +79,8 @@ import { RouterLink } from "vue-router";
   padding: 18px 26px 24px;
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
 }
 
 .home-header {
@@ -87,21 +132,20 @@ import { RouterLink } from "vue-router";
 
 .home-meta {
   margin-top: 56px;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: start;
-}
+  display: flex;
+  align-items: flex-start;
+  }
 
 .roles {
   margin: 0;
   font-size: 1.45rem;
   line-height: 1.1;
-  max-width: 270px;
 }
 
 .year {
-  justify-self: center;
-  font-size: 2rem;
+   margin-left: 373px;
+  font-size: 1.45rem;   /* mismo tamaño que roles */
+  line-height: 1.1;
 }
 
 .portfolio-gif {
@@ -117,11 +161,33 @@ import { RouterLink } from "vue-router";
   display: flex;
   align-items: center;          /* centrado vertical */
   justify-content: center;      /* centrado horizontal */
-  padding-top: 170px
+  padding-top: 170px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-trail-img {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  animation: trailFade 0.9s ease forwards;
+  z-index: 1;
 }
 
 .home-cta {
   text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes trailFade {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+  20% { opacity: 0.9; }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.05); }
 }
 
 .cta-line-1 {
@@ -155,12 +221,12 @@ import { RouterLink } from "vue-router";
 
 @media (max-width: 980px) {
   .home-meta {
-    grid-template-columns: 1fr;
-    row-gap: 16px;
+    flex-direction: column;
+    gap: 16px;
   }
 
   .year {
-    justify-self: start;
+     margin-left: 0;
   }
 }
 </style>
