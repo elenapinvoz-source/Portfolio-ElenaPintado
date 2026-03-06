@@ -7,31 +7,40 @@ import { ref } from "vue";
 
 const openItem = ref<string | null>(null);
 
+const softwareSkills = [
+  { key: "photoshop", name: "Photoshop", icon: "/imagenes/software/photoshop.png", level: 75, fallback: "Ps" },
+  { key: "indesign", name: "InDesign", icon: "/imagenes/software/indesign.png", level: 88, fallback: "Id" },
+  { key: "illustrator", name: "Illustrator", icon: "/imagenes/software/illustrator.png", level: 95, fallback: "Ai" },
+  { key: "procreate", name: "Procreate", icon: "/imagenes/software/procreate.png", level: 90, fallback: "Pc" },
+  { key: "canva", name: "Canva", icon: "/imagenes/software/canva.png", level: 86, fallback: "Cv" },
+];
+
+
 const aboutItems = [
   {
     key: "experiencia",
     title: "EXPERIENCIA",
-    body: "Freelance en diseño gráfico, branding y piezas para redes.",
+    body: "REBRANDING Y COMUNICACIÓN VISUAL - CREFAD \nPROYECTOS DE AUTOR: FOTOGRAFÍA, DISEÑO E ILUSTRACIÓN",
   },
   {
     key: "educacion",
     title: "EDUCACIÓN",
-    body: "Grado en Diseño y Tecnologías Creativas, UPV.",
+    body: "GRADO EN DISEÑO Y TECNOLOGÍAS CREATIVAS / UPV (2023 — PRESENTE)",
   },
   {
     key: "idiomas",
     title: "IDIOMAS",
-    body: "Español (nativo), Inglés (B2).",
+    body: "ESPAÑOL / NATIVO \nINGLÉS / NIVEL INTERMEDIO (B2 EN PROCESO)",
   },
   {
     key: "habilidades",
     title: "HABILIDADES",
-    body: "Dirección de arte, ilustración, fotografía y diseño editorial.",
+    body: "IDENTIDAD VISUAL \nFOTOGRAFÍA DIGITAL \nDISEÑO EDITORIAL Y CARTELERÍA \nILUSTRACIÓN",
   },
   {
     key: "softwares",
     title: "SOFTWARES",
-    body: "Illustrator, Photoshop, InDesign, Figma, Lightroom.",
+    body: "",
   },
   {
     key: "intereses",
@@ -85,18 +94,47 @@ function toggleItem(key: string) {
           />
         </button>
 
-        <div v-if="openItem === item.key" class="accordion-content">
+        <div v-if="openItem === item.key && item.key !== 'softwares'" class="accordion-content">
           {{ item.body }}
         </div>
+
+        <div v-if="openItem === item.key && item.key === 'softwares'" class="accordion-content software-content">
+          <div
+            v-for="software in softwareSkills"
+            :key="software.key"
+            class="software-row"
+            :style="{ '--skill-level': `${software.level}%` }"
+          >
+            <div class="software-icon-wrap" :title="software.name">
+              <img :src="software.icon" :alt="software.name" class="software-icon" />
+              <span class="software-fallback">{{ software.fallback }}</span>
+            </div>
+
+            <div class="software-bar">
+              <div class="software-fill"></div>
+            </div>
+          </div>
+        </div>
+
       </article>
     </section>
+    <section class="about-quote">
+      <p>
+        MI CABEZA NUNCA SE CALLA Y POR<br />
+        ESO DISEÑO. CADA PROYECTO PASA<br />
+        POR MIL FILTROS HASTA QUE<br />
+        ENCUENTRO ESA VOZ AUTÉNTICA<br />
+        QUE ESTABAS BUSCANDO.
+      </p>
+    </section>
+
     
   </section>
 </template>
 
 <style scoped>
 .about-page {
-  padding: 14px 26px 28px;
+  padding: 14px 26px 90px;
   background: #fff;
   color: #111;
 }
@@ -154,7 +192,7 @@ function toggleItem(key: string) {
 }
 
 .about-accordion {
-  margin: 64px auto 0;
+  margin: 80px auto 0;
   width: 1042px;                 /* mismo bloque que imagen+texto */
   max-width: calc(100% - 52px);  /* respeta márgenes laterales */
 }
@@ -169,7 +207,7 @@ function toggleItem(key: string) {
 
 .accordion-trigger {
   width: 100%;
-  min-height: 62px;
+  min-height: 72px;
   padding: 0;
   border: 0;
   background: transparent;
@@ -195,6 +233,7 @@ function toggleItem(key: string) {
   padding: 0 0 20px;
   font-size: 1.2rem;
   line-height: 1.35;
+  white-space: pre-line;
 }
 
 @media (max-width: 980px) {
@@ -219,6 +258,32 @@ function toggleItem(key: string) {
     min-height: 56px;
   }
 }
+
+.software-content { display: flex; flex-direction: column; gap: 14px; padding-top: 6px; }
+.software-row { display: flex; align-items: center; gap: 16px; }
+.software-icon-wrap { width: 42px; height: 42px; border-radius: 10px; background: #111; overflow: hidden; position: relative; border: 1px solid #111; flex: 0 0 42px; }
+.software-icon { width: 100%; height: 100%; object-fit: cover; display: block; }
+.software-fallback { position: absolute; inset: 0; color: #fff; font-weight: 700; font-size: 1rem; display: inline-flex; align-items: center; justify-content: center; pointer-events: none; }
+.software-bar { height: 8px; border:1.5px solid #111; border-radius: 900px; width: 290px; background: #fff; overflow: hidden; }
+.software-fill { width: 0; height: 100%; background: #111; border-radius: inherit; transition: width 0.35s ease; }
+.software-row:hover .software-fill { width: var(--skill-level); }
+
+.about-quote {
+  margin: 155px auto 95px;
+  max-width: 980px;
+  text-align: center;
+}
+
+.about-quote p {
+  margin: 0;
+  font-size: 3.4rem;
+  line-height: 1.2;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+
+
 
 </style>
 
