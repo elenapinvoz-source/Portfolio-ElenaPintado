@@ -1,16 +1,15 @@
 
 <script setup lang="ts">
-import { ArrowLeft, ChevronDown } from "lucide-vue-next";
-import { RouterLink } from "vue-router";
+import { ChevronDown } from "lucide-vue-next";
 import { Card } from "@/components/ui/card";
 import { ref } from "vue";
 
 const openItem = ref<string | null>(null);
 
 const softwareSkills = [
-  { key: "photoshop", name: "Photoshop", icon: "/imagenes/software/photoshop.png", level: 75, fallback: "Ps" },
-  { key: "indesign", name: "InDesign", icon: "/imagenes/software/indesign.png", level: 88, fallback: "Id" },
-  { key: "illustrator", name: "Illustrator", icon: "/imagenes/software/illustrator.png", level: 95, fallback: "Ai" },
+  { key: "photoshop", name: "Photoshop", icon:"", level: 75, fallback: "Ps" },
+  { key: "indesign", name: "InDesign", icon: "", level: 88, fallback: "Id" },
+  { key: "illustrator", name: "Illustrator", icon: "", level: 95, fallback: "Ai" },
   { key: "procreate", name: "Procreate", icon: "/imagenes/software/procreate.png", level: 90, fallback: "Pc" },
   { key: "canva", name: "Canva", icon: "/imagenes/software/canva.png", level: 86, fallback: "Cv" },
 ];
@@ -57,11 +56,6 @@ function toggleItem(key: string) {
 
 <template>
   <section class="about-page">
-    <RouterLink to="/" class="about-back">
-      <ArrowLeft :size="24" :stroke-width="1.75" />
-      <span>SOBRE MI</span>
-    </RouterLink>
-
     <section class="about-content">
       <Card class="photo-card">
         <img
@@ -106,7 +100,12 @@ function toggleItem(key: string) {
             :style="{ '--skill-level': `${software.level}%` }"
           >
             <div class="software-icon-wrap" :title="software.name">
-              <img :src="software.icon" :alt="software.name" class="software-icon" />
+                <img
+                  v-if="software.icon"
+                  :src="software.icon"
+                  :alt="software.name"
+                  class="software-icon"
+                />
               <span class="software-fallback">{{ software.fallback }}</span>
             </div>
 
@@ -134,19 +133,9 @@ function toggleItem(key: string) {
 
 <style scoped>
 .about-page {
-  padding: 14px 26px 90px;
+  padding: 40px 26px 90px;
   background: #fff;
   color: #111;
-}
-
-.about-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  color: #111;
-  text-decoration: none;
-  font-size: 1rem;
-  margin-left: 0;
 }
 
 .about-content {
