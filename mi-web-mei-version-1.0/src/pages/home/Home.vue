@@ -28,7 +28,7 @@ function onCtaMove(e: MouseEvent) {
     id: now + Math.random(),
     x: e.clientX - rect.left,
     y: e.clientY - rect.top,
-    src: pool[Math.floor(Math.random() * pool.length)],
+    src: pool[Math.floor(Math.random() * pool.length)] ?? "/imagenes/Home/PORTFOLIO 1.png",
   };
 
   hoverImgs.value.push(img);
@@ -64,7 +64,7 @@ function onCtaMove(e: MouseEvent) {
       <section class="home-cta">
         <p class="cta-line-1">¿BUSCABAS ALGO DIFERENTE?</p>
         <p class="cta-line-2">PUES YA ME HAS ENCONTRADO</p>
-        <RouterLink to="/contacto" class="cta-button">¿HABLAMOS?</RouterLink>
+        <RouterLink to="/contacto" class="cta-button">¿HÁBLAMOS?</RouterLink>
       </section>
     </section>
   </section>
@@ -76,100 +76,58 @@ function onCtaMove(e: MouseEvent) {
   min-height: 100vh;
   background: #fff;
   color: #111;
-  padding: 18px 26px 24px;
+  padding: clamp(12px, 2vw, 18px) clamp(12px, 2.4vw, 26px) clamp(14px, 2.5vw, 24px);
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
 }
 
-.home-header {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  column-gap: 16px;
-}
-
-.brand {
-  justify-self: start;
-  color: #111;
-  text-decoration: none;
-  font-size: 1.95rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-
-.menu-pill {
-  justify-self: center;
-  border: 2px solid #111;
-  border-radius: 9999px;
-  min-height: 56px;
-  padding: 0 20px;
-  display: flex;
-  align-items: center;
-  gap: 26px;
-}
-
-.menu-link {
-  color: #111;
-  text-decoration: none;
-  font-size: 1.55rem;
-  line-height: 1;
-}
-
-.contact-btn {
-  justify-self: end;
-  background: #111;
-  color: #fff;
-  border-radius: 9999px;
-  min-height: 56px;
-  padding: 0 22px;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  font-size: 1.2rem;
-}
-
 .home-meta {
-  margin-top: 56px;
+  margin-top: clamp(22px, 6vw, 56px);
   display: flex;
+  flex-direction: row;
   align-items: flex-start;
-  }
+  justify-content: space-between;
+  gap: clamp(10px, 2vw, 20px);
+}
 
 .roles {
   margin: 0;
-  font-size: 1.45rem;
-  line-height: 1.1;
+  font-size: clamp(0.55rem, 0.35rem + 1.4vw, 1.45rem);
+  line-height: 1.12;
 }
 
 .year {
-   margin-left: 373px;
-  font-size: 1.45rem;   /* mismo tamaño que roles */
-  line-height: 1.1;
+  margin-left: auto;
+  font-size: clamp(0.55rem, 0.35rem + 1.4vw, 1.45rem);
+  line-height: 1.12;
 }
 
 .portfolio-gif {
   width: 100%;
-  max-width: 1600px; /* mas grande */
+  max-width: 1600px;
   height: auto;
-  margin-top: 130px;          /* mas arriba */
-   align-items: center;
+  margin-top: clamp(46px, 10vw, 130px);
 }
 
+
 .home-cta-section {
-  min-height: 100vh;            /* una pantalla entera */
+  min-height: clamp(460px, 72vh, 100vh);
   display: flex;
-  align-items: center;          /* centrado vertical */
-  justify-content: center;      /* centrado horizontal */
-  padding-top: 170px;
+  align-items: center;
+  justify-content: center;
+  padding-top: clamp(70px, 12vw, 170px);
+  padding-bottom: clamp(70px, 10vw, 160px);
   position: relative;
   overflow: hidden;
 }
 
+
 .hover-trail-img {
   position: absolute;
-  width: 120px;
-  height: 120px;
+  width: clamp(88px, 10vw, 120px);
+  height: clamp(88px, 10vw, 120px);
   object-fit: cover;
   pointer-events: none;
   transform: translate(-50%, -50%);
@@ -205,13 +163,13 @@ function onCtaMove(e: MouseEvent) {
 }
 
 .cta-button {
-  margin: 26px auto 0;
+  margin: clamp(14px, 2vw, 26px) auto 0;
   background: #111;
   color: #fff;
   border-radius: 9999px;
-  min-height: 56px;
-  padding: 0 22px;
-  font-size: 1.2rem;
+  min-height: clamp(38px, 5vw, 56px);     
+  padding: 0 clamp(10px, 1.8vw, 22px);     
+  font-size: clamp(0.78rem, 1.5vw, 1.2rem);
   font-weight: 400;
   text-decoration: none;
   display: inline-flex;
@@ -219,14 +177,4 @@ function onCtaMove(e: MouseEvent) {
 }
 
 
-@media (max-width: 980px) {
-  .home-meta {
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .year {
-     margin-left: 0;
-  }
-}
 </style>

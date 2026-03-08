@@ -17,13 +17,14 @@ const projects = [
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       <RouterLink v-for="p in projects" :key="p.id" :to="p.to" class="group block">
         <Card class="relative overflow-hidden rounded-none p-0">
-          <img :src="p.image" :alt="p.title" class="h-[420px] w-full object-cover transition-transform duration-300 group-hover:scale-105" />
+          <img :src="p.image" :alt="p.title" class="h-[300px] w-full object-cover transition-transform duration-300 group-hover:scale-105 sm:h-[420px]" />
           <div class="absolute inset-0 grid place-items-center bg-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-            <span class="text-4xl font-light underline underline-offset-4">{{ p.title }}</span>
+            <span class="text-3xl font-light underline underline-offset-4 sm:text-4xl">{{ p.title }}</span>
           </div>
         </Card>
       </RouterLink>
     </div>
   </section>
 </template>
+
 

@@ -1,6 +1,6 @@
 
 <script setup lang="ts">
-import { ChevronDown } from "lucide-vue-next";
+import { ChevronDown, ArrowDownRight } from "lucide-vue-next";
 import { Card } from "@/components/ui/card";
 import { ref } from "vue";
 
@@ -51,6 +51,15 @@ const aboutItems = [
 function toggleItem(key: string) {
   openItem.value = openItem.value === key ? null : key;
 }
+
+const conocemeCards = [
+  { key: "obs", label: "OBSERVADORA", img: "/imagenes/Sobremi/rojo.jpg" },
+  { key: "cur", label: "CURIOSA", img: "/imagenes/Sobremi/vaca.JPG" },
+  { key: "ana", label: "ANALÍTICA", img: "/imagenes/Sobremi/azul.jpg" },
+  { key: "det", label: "DETALLISTA", img: "/imagenes/Sobremi/libro.jpg" },
+  { key: "res", label: "RESOLUTIVA", img: "/imagenes/Sobremi/playa.jpg" },
+];
+
 
 </script>
 
@@ -117,6 +126,28 @@ function toggleItem(key: string) {
 
       </article>
     </section>
+    <section class="about-conoceme">
+      <div class="conoceme-head">
+        <h3 class="conoceme-title">
+          HAZ CLICK PARA CONOCERME
+          <ArrowDownRight :size="40" class="conoceme-arrow" />
+        </h3>
+      </div>
+
+      <div class="conoceme-bleed">
+        <div class="conoceme-grid">
+          <div
+            v-for="card in conocemeCards"
+            :key="card.key"
+            class="conoceme-card"
+          >
+            <img :src="card.img" :alt="card.label" class="conoceme-img" />
+            <span class="conoceme-overlay">{{ card.label }}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="about-quote">
       <p>
         MI CABEZA NUNCA SE CALLA Y POR<br />
@@ -167,7 +198,6 @@ function toggleItem(key: string) {
 }
 
 .about-text {
-  margin-left: 0;
   width: 700px;
   font-size: 2.7rem;
   line-height: 1.02;
@@ -225,29 +255,6 @@ function toggleItem(key: string) {
   white-space: pre-line;
 }
 
-@media (max-width: 980px) {
-  .about-content {
-    margin-left: 0;
-    flex-direction: column;
-  }
-
-  .about-text {
-    width: 100%;
-    font-size: 1.8rem;
-  }
-
-    .about-accordion {
-    width: 100%;
-    max-width: 100%;
-    margin-top: 40px;
-  }
-
-  .accordion-trigger {
-    font-size: 1.35rem;
-    min-height: 56px;
-  }
-}
-
 .software-content { display: flex; flex-direction: column; gap: 14px; padding-top: 6px; }
 .software-row { display: flex; align-items: center; gap: 16px; }
 .software-icon-wrap { width: 42px; height: 42px; border-radius: 10px; background: #111; overflow: hidden; position: relative; border: 1px solid #111; flex: 0 0 42px; }
@@ -272,6 +279,153 @@ function toggleItem(key: string) {
   letter-spacing: -0.015em;
 }
 
+.about-conoceme {
+  margin: 110px auto 40px;
+  width: 100%;
+}
+
+.conoceme-head {
+  width: 1042px;
+  max-width: calc(100% - 52px);
+  margin: 0 auto;
+}
+
+.conoceme-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+.conoceme-title {
+  margin: 0 60px 60px;
+  font-size: 2.1rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.conoceme-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
+}
+
+.conoceme-card {
+  position: relative;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+
+.conoceme-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease, filter 0.35s ease;
+}
+
+.conoceme-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.42);
+  color: #fff;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.conoceme-card:hover .conoceme-overlay {
+  opacity: 1;
+}
+
+.conoceme-card:hover .conoceme-img {
+  transform: scale(1.04);
+  filter: brightness(0.78);
+}
+
+@media (max-width: 980px) {
+  .about-page {
+    padding: 26px 18px 56px;
+  }
+
+  .about-content {
+    margin-left: 0;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .about-text {
+    width: 100%;
+    font-size: 1.8rem;
+  }
+
+    .about-accordion {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 40px;
+  }
+
+  .accordion-trigger {
+    font-size: 1.35rem;
+    min-height: 56px;
+  }
+
+  .about-conoceme {
+    margin: 72px auto 24px;
+  }
+
+  .conoceme-head {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .conoceme-title {
+    margin: 0 0 32px;
+    font-size: 1.4rem;
+    gap: 6px;
+  }
+
+  .conoceme-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .conoceme-overlay {
+    font-size: 1.05rem;
+  }
+
+  .about-quote {
+    margin: 90px auto 36px;
+  }
+
+  .about-quote p {
+    font-size: clamp(1.7rem, 8vw, 2.5rem);
+    line-height: 1.16;
+  }
+}
+
+@media (max-width: 640px) {
+  .photo-card {
+    width: min(100%, 320px);
+    height: auto;
+    aspect-ratio: 320 / 430;
+    flex-basis: auto;
+  }
+
+  .software-row {
+    gap: 10px;
+  }
+
+  .software-bar {
+    width: 100%;
+  }
+}
 
 
 </style>

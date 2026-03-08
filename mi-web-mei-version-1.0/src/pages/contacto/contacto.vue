@@ -140,7 +140,7 @@ const como = ref("");
   background: #fff;
   color: #111;
   min-height: 100vh;
-  padding: 24px 100px 48px;
+  padding: 24px clamp(20px, 6vw, 100px) 48px;
 }
 
 .contact-title-gif {
@@ -197,6 +197,7 @@ const como = ref("");
   color: #111;
   text-decoration: none;
   font-size: 0.9rem;
+  word-break: break-word;
 }
 
 .contact-form {
@@ -367,11 +368,16 @@ const como = ref("");
     gap: 14px;
   }
   .thank-section {
-  min-height: auto;
-  display: grid;
-  gap: 18px;
-  padding: 28px 22px 34px;
-}
+    min-height: auto;
+    display: grid;
+    gap: 18px;
+    padding: 28px 22px 34px;
+  }
+
+  .thank-inner {
+    min-height: auto;
+    top: 0;
+  }
 
   .thank-word,
   .you-word,
@@ -400,6 +406,16 @@ const como = ref("");
 
   .you-word {
     justify-self: end;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-copy {
+    font-size: 1.08rem;
+  }
+
+  .contact-links a {
+    font-size: 0.85rem;
   }
 }
 

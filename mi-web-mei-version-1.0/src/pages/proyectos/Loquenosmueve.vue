@@ -2,7 +2,7 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router"
 import { ArrowLeft } from "lucide-vue-next"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import {
   Carousel,
   CarouselContent,
@@ -27,9 +27,9 @@ const carouselImages = [
   <section class="mx-auto w-full max-w-5xl px-4 py-10 text-white">
     <RouterLink
       to="/proyectos"
-      class="mb-6 inline-flex w-fit items-center gap-2 -ml-20 text-[#d9f227] hover:opacity-80"
+      class="mb-6 inline-flex w-fit items-center gap-2 ml-0 sm:-ml-20 text-[#d9f227] hover:opacity-80"
     >
-      <ArrowLeft :size="40" />
+      <ArrowLeft :size="34" class="sm:h-10 sm:w-10" />
     </RouterLink>
 
     <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
@@ -93,3 +93,5 @@ const carouselImages = [
     </div>
   </section>
 </template>
+
+

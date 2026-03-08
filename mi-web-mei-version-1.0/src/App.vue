@@ -65,36 +65,39 @@ const email = "elenapinvoz@gmail.com";
 <style scoped>
 .app-header {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  column-gap: 16px;
-  padding: 18px 26px;
+  column-gap: clamp(8px, 2vw, 16px);
+  padding: clamp(10px, 2vw, 18px) clamp(10px, 2.5vw, 26px);
 }
 
 .brand {
   justify-self: start;
   color: #111;
   text-decoration: none;
-  font-size: 1.95rem;
+  font-size: clamp(1.1rem, 2.2vw, 1.95rem);
   font-weight: 700;
   letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
 .menu-pill {
   justify-self: center;
   border: 2px solid #111;
   border-radius: 9999px;
-  min-height: 56px;
-  padding: 0 20px;
+  min-height: clamp(38px, 5vw, 56px);
+  padding: 0 clamp(10px, 2vw, 20px);
   display: flex;
   align-items: center;
-  gap: 26px;
+  gap: clamp(8px, 2vw, 26px);
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .menu-link {
   color: #111;
   text-decoration: none;
-  font-size: 1.55rem;
+  font-size: clamp(0.82rem, 1.8vw, 1.55rem);
   line-height: 1;
 }
 
@@ -111,25 +114,46 @@ const email = "elenapinvoz@gmail.com";
   background: #111;
   color: #fff;
   border-radius: 9999px;
-  min-height: 56px;
-  padding: 0 22px;
+  min-height: clamp(38px, 5vw, 56px);
+  padding: 0 clamp(10px, 1.8vw, 22px);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  font-size: 1.2rem;
+  font-size: clamp(0.78rem, 1.5vw, 1.2rem);
+  white-space: nowrap;
 }
 
-@media (max-width: 980px) {
-  .app-header {
-    grid-template-columns: 1fr;
-    row-gap: 12px;
-  }
+.app-footer {
+  background: #111;
+  color: #fff;
+  border-top: 1px solid #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(10px, 2vw, 20px);
+  padding: clamp(14px, 2vw, 20px) clamp(14px, 3vw, 32px);
+  flex-wrap: wrap;
+}
 
-  .brand,
-  .menu-pill,
-  .contact-btn {
-    justify-self: start;
-  }
+.footer-copy {
+  margin: 0;
+  font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+}
+
+.footer-links {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(8px, 1.5vw, 14px);
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: clamp(0.75rem, 1.2vw, 0.85rem);
 }
 
 .app-shell {
@@ -144,47 +168,23 @@ const email = "elenapinvoz@gmail.com";
   flex: 1;
 }
 
-.app-footer {
-  background: #111;
-  color: #fff;
-  border-top: 1px solid #2a2a2a;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 20px 32px;
-}
+@media (max-width: 640px) {
+  .footer-link span {
+    display: none; /* solo en móvil pequeño */
+  }
 
-.footer-copy {
-  margin: 0;
-  font-size: 0.85rem;
-}
+  .footer-link {
+    gap: 0;
+    width: 28px;
+    height: 28px;
+    justify-content: center;
+  }
 
-.footer-links {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.footer-link {
-  color: #fff;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.85rem;
-}
-
-.footer-link:hover {
-  opacity: 0.78;
-}
-
-@media (max-width: 980px) {
-  .app-footer {
-    flex-direction: column;
-    align-items: flex-start;
+  .footer-links {
+    gap: 10px;
   }
 }
+
 
 
 </style>
