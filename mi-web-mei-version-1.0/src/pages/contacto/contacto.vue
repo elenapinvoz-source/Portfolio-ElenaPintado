@@ -11,6 +11,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Mail, Instagram } from "lucide-vue-next";
+
 
 const servicios = [
   "Branding",
@@ -47,9 +49,17 @@ const como = ref("");
         </p>
 
         <div class="contact-links">
-          <a href="https://instagram.com/TUUSUARIO" target="_blank" rel="noreferrer">INSTAGRAM</a>
-          <a href="mailto:tuemail@correo.com">CORREO</a>
+          <a href="mailto:elenapinvoz@gmail.com" class="contact-link">
+            <Mail :size="16" />
+            <span>elenapinvoz@gmail.com</span>
+          </a>
+          <a href="https://instagram.com/elsbydesign" target="_blank" rel="noreferrer" class="contact-link">
+            <Instagram :size="16" />
+            <span>@elsbydesign</span>
+          </a>
         </div>
+
+
       </aside>
 
       <form class="contact-form" @submit.prevent>
@@ -98,7 +108,31 @@ const como = ref("");
       </form>
 
     </section>
+
   </section>
+  <section class="thank-section">
+    <div class="thank-inner">
+      <h2 class="thank-word">THANK</h2>
+      <span class="paren paren-right">)</span>
+
+      <p class="mini mini-right">
+        VAMOS A<br />
+        TRABAJAR<br />
+        JUNTOS
+      </p>
+
+      <p class="mini mini-left">
+        YO SIEMPRE ESTOY<br />
+        ABIERTA A NUEVOS<br />
+        E INSPIRADORES<br />
+        PROYECTOS
+      </p>
+
+      <span class="paren paren-left">(</span>
+      <h2 class="you-word">YOU</h2>
+    </div>
+  </section>
+
 </template>
 
 <style scoped>
@@ -106,7 +140,7 @@ const como = ref("");
   background: #fff;
   color: #111;
   min-height: 100vh;
-  padding: 24px 60px 48px;
+  padding: 24px 100px 48px;
 }
 
 .contact-title-gif {
@@ -128,21 +162,35 @@ const como = ref("");
   min-height: 420px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 230px;
 }
 
 .contact-copy {
   margin: 0;
-  font-size: 2rem;
+  font-size: 1.3rem;
   line-height: 1.02;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: -0.01em;
 }
 
 .contact-links {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
+}
+
+.contact-links a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #111;
+  text-decoration: none;
+}
+
+
+.contact-link:hover {
+  opacity: 0.75;
 }
 
 .contact-links a {
@@ -223,6 +271,82 @@ const como = ref("");
   width: 100% !important;
 }
 
+.thank-section {
+  position: relative;
+  background: #fff;
+  min-height: 78vh;
+  width: 100%;
+  overflow: visible;
+  padding-bottom: 40px;
+}
+
+.thank-inner {
+  position: relative;
+  min-height: 78vh;
+  top: -20px;
+}
+
+.thank-word {
+  position: absolute;
+  top: 0px;
+  left: 28px;
+  margin: 0;
+  font-size: clamp(4.8rem, 13vw, 10rem);
+  font-weight: 700;
+  line-height: 0.88;
+  letter-spacing: 0.01em;
+}
+
+.you-word {
+  position: absolute;
+  right: 28px;
+  bottom: 20px;
+  margin: 0;
+  font-size: clamp(5rem, 13.5vw, 10.5rem);
+  font-weight: 700;
+  line-height: 0.88;
+  letter-spacing: 0.01em;
+}
+
+.paren {
+  position: absolute;
+  margin: 0;
+  font-size: clamp(5rem, 10vw, 9rem);
+  font-weight: 700;
+  line-height: 0.8;
+}
+
+.paren-right {
+  top: 10px;
+  right: 36px;
+}
+
+.paren-left {
+  left: 36px;
+  bottom: 55px;
+}
+
+.mini {
+  position: absolute;
+  margin: 0;
+  font-size: 1.3rem;
+  line-height: 1.04;
+  font-weight: 400;
+}
+
+.mini-right {
+  top: 125px;
+  right: 240px;
+  text-align: left;
+}
+
+.mini-left {
+  top: 285px;
+  left: 240px;
+  text-align: left;
+}
+
+
 @media (max-width: 900px) {
   .contact-page {
     padding: 20px 22px 36px;
@@ -242,7 +366,43 @@ const como = ref("");
     grid-template-columns: 1fr;
     gap: 14px;
   }
+  .thank-section {
+  min-height: auto;
+  display: grid;
+  gap: 18px;
+  padding: 28px 22px 34px;
 }
+
+  .thank-word,
+  .you-word,
+  .paren,
+  .mini {
+    position: static;
+  }
+
+  .thank-word,
+  .you-word {
+    font-size: clamp(3rem, 16vw, 5rem);
+  }
+
+  .paren {
+    font-size: clamp(2.4rem, 10vw, 4rem);
+  }
+
+  .mini {
+    font-size: 1rem;
+    line-height: 1.15;
+  }
+
+  .paren-right {
+    justify-self: end;
+  }
+
+  .you-word {
+    justify-self: end;
+  }
+}
+
 
 </style>
 
