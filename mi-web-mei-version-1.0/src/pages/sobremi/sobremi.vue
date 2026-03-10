@@ -10,8 +10,8 @@ const softwareSkills = [
   { key: "photoshop", name: "Photoshop", icon: "", level: 75, fallback: "Ps" },
   { key: "indesign", name: "InDesign", icon: "", level: 88, fallback: "Id" },
   { key: "illustrator", name: "Illustrator", icon: "", level: 95, fallback: "Ai" },
-  { key: "procreate", name: "Procreate", icon: "/imagenes/software/procreate.png", level: 90, fallback: "Pc" },
-  { key: "canva", name: "Canva", icon: "/imagenes/software/canva.png", level: 86, fallback: "Cv" },
+  { key: "procreate", name: "Procreate", icon: "", level: 90, fallback: "Pc" },
+  { key: "canva", name: "Canva", icon: "", level: 86, fallback: "Cv" },
 ];
 
 const aboutItems = [

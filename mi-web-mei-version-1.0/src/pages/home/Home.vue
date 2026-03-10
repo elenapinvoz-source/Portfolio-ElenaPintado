@@ -177,6 +177,14 @@ function onCtaMove(e: MouseEvent) {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
+  transition: transform .15s ease, background-color .15s ease, color .15s ease, box-shadow .15s ease, border-color .15s ease, opacity .15s ease;
+}
+
+.cta-button:hover{
+  opacity: .85;
+  background: #000;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0,0,0,.15);
 }
 
 
