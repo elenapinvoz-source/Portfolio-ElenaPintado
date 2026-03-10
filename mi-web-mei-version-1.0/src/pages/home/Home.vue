@@ -6,19 +6,22 @@ type HoverImg = { id: number; x: number; y: number; src: string };
 
 const hoverImgs = ref<HoverImg[]>([]);
 const pool = [
-  "/imagenes/Home/PORTFOLIO 1.png",
-  "/imagenes/Home/PORTFOLIO 1.png",
-  "/imagenes/Home/PORTFOLIO 1.png",
-  "/imagenes/Home/PORTFOLIO 1.png",
-  "/imagenes/Home/PORTFOLIO 1.png",
-
+  "/imagenes/Proyectos/vejez/ombligo.jpg",
+  "/imagenes/Proyectos/vejez/brazo.jpg",
+  "/imagenes/Proyectos/Mindpop/tablero.png",
+  "/imagenes/Proyectos/Mindpop/cartas.jpg",
+  "/imagenes/Proyectos/Crefad/mockup.jpg",  
+  "/imagenes/Proyectos/Comic/pagina.jpg",
+  "/imagenes/Proyectos/Comic/portada.jpg",
+  "/imagenes/Proyectos/Loquenosmueve/Mockupcartel.png",  
+  "/imagenes/Proyectos/Kaoka/detalledelante.jpg",  
   ];
 
 let last = 0;
 
 function onCtaMove(e: MouseEvent) {
   const now = Date.now();
-  if (now - last < 90) return; // controla frecuencia
+  if (now - last < 160) return; // controla frecuencia
   last = now;
 
   const el = e.currentTarget as HTMLElement;
@@ -34,7 +37,7 @@ function onCtaMove(e: MouseEvent) {
   hoverImgs.value.push(img);
   setTimeout(() => {
     hoverImgs.value = hoverImgs.value.filter((i) => i.id !== img.id);
-  }, 900);
+  }, 1500);
 }
 </script>
 
@@ -132,7 +135,7 @@ function onCtaMove(e: MouseEvent) {
   pointer-events: none;
   transform: translate(-50%, -50%);
   border-radius: 10px;
-  animation: trailFade 0.9s ease forwards;
+  animation: trailFade 1.5s ease-out forwards;
   z-index: 1;
 }
 
