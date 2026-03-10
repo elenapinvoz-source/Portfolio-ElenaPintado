@@ -7,13 +7,12 @@ import { ref } from "vue";
 const openItem = ref<string | null>(null);
 
 const softwareSkills = [
-  { key: "photoshop", name: "Photoshop", icon:"", level: 75, fallback: "Ps" },
+  { key: "photoshop", name: "Photoshop", icon: "", level: 75, fallback: "Ps" },
   { key: "indesign", name: "InDesign", icon: "", level: 88, fallback: "Id" },
   { key: "illustrator", name: "Illustrator", icon: "", level: 95, fallback: "Ai" },
   { key: "procreate", name: "Procreate", icon: "/imagenes/software/procreate.png", level: 90, fallback: "Pc" },
   { key: "canva", name: "Canva", icon: "/imagenes/software/canva.png", level: 86, fallback: "Cv" },
 ];
-
 
 const aboutItems = [
   {
@@ -60,97 +59,144 @@ const conocemeCards = [
   { key: "res", label: "RESOLUTIVA", img: "/imagenes/Sobremi/playa.jpg" },
   { key: "per", label: "PERFECCIONISTA", img: "/imagenes/Sobremi/cabina.jpg" },
 ];
-
-
 </script>
 
 <template>
-  <section class="about-page">
-    <section class="about-content">
-      <Card class="photo-card">
+  <section
+    class="bg-white px-[26px] pt-10 pb-[90px] text-[#111] max-[980px]:px-[18px] max-[980px]:pt-[26px] max-[980px]:pb-[56px]"
+  >
+    <section
+      class="mt-[10px] ml-10 flex items-start justify-center gap-[22px] max-[980px]:ml-0 max-[980px]:flex-col max-[980px]:gap-4"
+    >
+      <Card
+        class="h-[430px] w-[320px] flex-none overflow-hidden rounded-none border border-[#111] bg-white p-0 shadow-none max-[640px]:h-auto max-[640px]:w-full max-[640px]:max-w-[320px] max-[640px]:basis-auto max-[640px]:aspect-[320/430]"
+      >
         <img
           src="/imagenes/Sobremi/platobien.jpg"
           alt="Elena Pintado"
-          class="photo-image"
+          class="block h-full w-full object-contain"
         />
       </Card>
 
-      <p class="about-text">
-        HOLI! YO SOY <em>ELENA PINTADO</em> (PUEDES LLAMARME <em>ELEN</em>). TENGO
-        20 ANOS Y ESTOY ESTUDIANDO DISEÑO Y TECNOLOGÍAS CREATIVAS EN LA
-        UNIVERSIDAD POLITÉCNICA DE VALENCIA - MI CARRERA ES LA FORMA QUE TENGO DE
-        ENTENDER EL MUNDO.
+      <p
+        class="w-[700px] text-[2.7rem] font-bold leading-[1.02] tracking-[-0.01em] max-[980px]:w-full max-[980px]:text-[1.8rem]"
+      >
+        HOLI! YO SOY <em class="font-normal italic">ELENA PINTADO</em> (PUEDES
+        LLAMARME <em class="font-normal italic">ELEN</em>). TENGO 20 AÑOS Y
+        ESTOY ESTUDIANDO DISEÑO Y TECNOLOGÍAS CREATIVAS EN LA UNIVERSIDAD
+        POLITÉCNICA DE VALENCIA - MI CARRERA ES LA FORMA QUE TENGO DE ENTENDER
+        EL MUNDO.
       </p>
     </section>
 
-     <section class="about-accordion">
+    <section
+      class="mx-auto mt-20 w-[1042px] max-w-[calc(100%-52px)] max-[980px]:mt-10 max-[980px]:w-full max-[980px]:max-w-full"
+    >
       <article
         v-for="item in aboutItems"
         :key="item.key"
-        class="accordion-item"
+        class="border-t border-[#111] last:border-b"
       >
-        <button class="accordion-trigger" type="button" @click="toggleItem(item.key)">
+        <button
+          class="flex min-h-[72px] w-full items-center justify-between bg-transparent py-0 text-left text-[2.1rem] font-bold text-[#111] max-[980px]:min-h-[56px] max-[980px]:text-[1.35rem]"
+          type="button"
+          @click="toggleItem(item.key)"
+        >
           <span>{{ item.title }}</span>
+
           <ChevronDown
             :size="22"
-            class="accordion-icon"
-            :class="{ 'is-open': openItem === item.key }"
+            class="transition-transform duration-200"
+            :class="{ 'rotate-180': openItem === item.key }"
           />
         </button>
 
-        <div v-if="openItem === item.key && item.key !== 'softwares'" class="accordion-content">
+        <div
+          v-if="openItem === item.key && item.key !== 'softwares'"
+          class="whitespace-pre-line pb-5 text-[1.2rem] leading-[1.35]"
+        >
           {{ item.body }}
         </div>
 
-        <div v-if="openItem === item.key && item.key === 'softwares'" class="accordion-content software-content">
+        <div
+          v-if="openItem === item.key && item.key === 'softwares'"
+          class="flex flex-col gap-[14px] pt-[6px] pb-5"
+        >
           <div
             v-for="software in softwareSkills"
             :key="software.key"
-            class="software-row"
+            class="group flex items-center gap-4 max-[640px]:gap-[10px]"
             :style="{ '--skill-level': `${software.level}%` }"
           >
-            <div class="software-icon-wrap" :title="software.name">
-                <img
-                  v-if="software.icon"
-                  :src="software.icon"
-                  :alt="software.name"
-                  class="software-icon"
-                />
-              <span class="software-fallback">{{ software.fallback }}</span>
+            <div
+              class="relative h-[42px] w-[42px] flex-none overflow-hidden rounded-[10px] border border-[#111] bg-[#111]"
+              :title="software.name"
+            >
+              <img
+                v-if="software.icon"
+                :src="software.icon"
+                :alt="software.name"
+                class="block h-full w-full object-cover"
+              />
+              <span
+                class="pointer-events-none absolute inset-0 inline-flex items-center justify-center text-base font-bold text-white"
+              >
+                {{ software.fallback }}
+              </span>
             </div>
 
-            <div class="software-bar">
-              <div class="software-fill"></div>
+            <div
+              class="h-2 w-[290px] overflow-hidden rounded-[900px] border-[1.5px] border-[#111] bg-white max-[640px]:w-full"
+            >
+              <div
+                class="software-fill h-full rounded-[inherit] bg-[#111] transition-all duration-300"
+              />
             </div>
           </div>
         </div>
-
       </article>
     </section>
-    <section class="about-conoceme">
-      <div class="conoceme-head">
-        <h3 class="conoceme-title">
+
+    <section class="mx-auto mt-[110px] w-full max-[980px]:mt-[72px]">
+      <div
+        class="mx-auto w-[1042px] max-w-[calc(100%-52px)] max-[980px]:w-full max-[980px]:max-w-full"
+      >
+        <h3
+          class="mb-[60px] ml-[60px] inline-flex items-center gap-2 text-[2.1rem] font-bold max-[980px]:mb-8 max-[980px]:ml-0 max-[980px]:gap-[6px] max-[980px]:text-[1.4rem]"
+        >
           HAZ CLICK PARA CONOCERME
-          <ArrowDownRight :size="40" class="conoceme-arrow" />
+          <ArrowDownRight :size="40" class="max-[980px]:h-8 max-[980px]:w-8" />
         </h3>
       </div>
 
-      <div class="conoceme-bleed">
-        <div class="conoceme-grid">
+      <div class="ml-[calc(50%-50vw)] w-screen">
+        <div class="grid w-full grid-cols-6 max-[980px]:grid-cols-2">
           <div
             v-for="card in conocemeCards"
             :key="card.key"
-            class="conoceme-card"
+            class="group relative aspect-[4/5] overflow-hidden bg-transparent"
           >
-            <img :src="card.img" :alt="card.label" class="conoceme-img" />
-            <span class="conoceme-overlay">{{ card.label }}</span>
+            <img
+              :src="card.img"
+              :alt="card.label"
+              class="block h-full w-full object-cover transition duration-[450ms] ease-out group-hover:scale-[1.04] group-hover:brightness-[0.78]"
+            />
+            <span
+              class="absolute inset-0 grid place-items-center bg-black/40 text-[1.06rem] font-bold tracking-[0.02em] text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 max-[980px]:text-[1.05rem]"
+            >
+              {{ card.label }}
+            </span>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="about-quote">
-      <p>
+    <section
+      class="mx-auto mt-[155px] mb-[95px] max-w-[980px] text-center max-[980px]:mt-[90px] max-[980px]:mb-9"
+    >
+      <p
+        class="m-0 text-[3.4rem] font-normal italic leading-[1.2] tracking-[-0.015em] max-[980px]:text-[clamp(1.7rem,8vw,2.5rem)] max-[980px]:leading-[1.16]"
+      >
         MI CABEZA NUNCA SE CALLA Y POR<br />
         ESO DISEÑO. CADA PROYECTO PASA<br />
         POR MIL FILTROS HASTA QUE<br />
@@ -158,280 +204,16 @@ const conocemeCards = [
         QUE ESTABAS BUSCANDO.
       </p>
     </section>
-
-    
   </section>
 </template>
 
 <style scoped>
-.about-page {
-  padding: 40px 26px 90px;
-  background: #fff;
-  color: #111;
+.software-fill {
+  width: 0;
 }
 
-.about-content {
-  margin-top: 10px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  margin-left: 40px;
-  gap: 22px;
+.group:hover .software-fill {
+  width: var(--skill-level);
 }
-
-.photo-card {
-  width: 320px;
-  height: 430px;
-  flex: 0 0 320px;
-  padding: 0;
-  border-radius: 0;
-  border: 1px solid #111;
-  box-shadow: none;
-  background: #fff;
-  overflow: hidden;
-}
-
-.photo-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-
-.about-text {
-  width: 700px;
-  font-size: 2.7rem;
-  line-height: 1.02;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-
-.about-text em {
-  font-style: italic;
-  font-weight: 400;
-}
-
-.about-accordion {
-  margin: 80px auto 0;
-  width: 1042px;                 /* mismo bloque que imagen+texto */
-  max-width: calc(100% - 52px);  /* respeta márgenes laterales */
-}
-
-.accordion-item {
-  border-top: 1px solid #111;
-}
-
-.accordion-item:last-child {
-  border-bottom: 1px solid #111;
-}
-
-.accordion-trigger {
-  width: 100%;
-  min-height: 72px;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: #111;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 2.1rem;
-  font-weight: 700;
-  cursor: pointer;
-  text-align: left;
-}
-
-.accordion-icon {
-  transition: transform 0.2s ease;
-}
-
-.accordion-icon.is-open {
-  transform: rotate(180deg);
-}
-
-.accordion-content {
-  padding: 0 0 20px;
-  font-size: 1.2rem;
-  line-height: 1.35;
-  white-space: pre-line;
-}
-
-.software-content { display: flex; flex-direction: column; gap: 14px; padding-top: 6px; }
-.software-row { display: flex; align-items: center; gap: 16px; }
-.software-icon-wrap { width: 42px; height: 42px; border-radius: 10px; background: #111; overflow: hidden; position: relative; border: 1px solid #111; flex: 0 0 42px; }
-.software-icon { width: 100%; height: 100%; object-fit: cover; display: block; }
-.software-fallback { position: absolute; inset: 0; color: #fff; font-weight: 700; font-size: 1rem; display: inline-flex; align-items: center; justify-content: center; pointer-events: none; }
-.software-bar { height: 8px; border:1.5px solid #111; border-radius: 900px; width: 290px; background: #fff; overflow: hidden; }
-.software-fill { width: 0; height: 100%; background: #111; border-radius: inherit; transition: width 0.35s ease; }
-.software-row:hover .software-fill { width: var(--skill-level); }
-
-.about-quote {
-  margin: 155px auto 95px;
-  max-width: 980px;
-  text-align: center;
-}
-
-.about-quote p {
-  margin: 0;
-  font-size: 3.4rem;
-  line-height: 1.2;
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: -0.015em;
-}
-
-.about-conoceme {
-  margin: 110px auto 40px;
-  width: 100%;
-}
-
-.conoceme-head {
-  width: 1042px;
-  max-width: calc(100% - 52px);
-  margin: 0 auto;
-}
-
-.conoceme-bleed {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-}
-
-.conoceme-title {
-  margin: 0 60px 60px;
-  font-size: 2.1rem;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.conoceme-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  width: 100%;
-}
-
-.conoceme-card {
-  position: relative;
-  border: 0;
-  padding: 0;
-  background: transparent;
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-}
-
-.conoceme-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.45s ease, filter 0.35s ease;
-}
-
-.conoceme-overlay {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  background: rgba(0, 0, 0, 0.42);
-  color: #fff;
-  font-size: 1.06rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.conoceme-card:hover .conoceme-overlay {
-  opacity: 1;
-}
-
-.conoceme-card:hover .conoceme-img {
-  transform: scale(1.04);
-  filter: brightness(0.78);
-}
-
-@media (max-width: 980px) {
-  .about-page {
-    padding: 26px 18px 56px;
-  }
-
-  .about-content {
-    margin-left: 0;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .about-text {
-    width: 100%;
-    font-size: 1.8rem;
-  }
-
-    .about-accordion {
-    width: 100%;
-    max-width: 100%;
-    margin-top: 40px;
-  }
-
-  .accordion-trigger {
-    font-size: 1.35rem;
-    min-height: 56px;
-  }
-
-  .about-conoceme {
-    margin: 72px auto 24px;
-  }
-
-  .conoceme-head {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .conoceme-title {
-    margin: 0 0 32px;
-    font-size: 1.4rem;
-    gap: 6px;
-  }
-
-  .conoceme-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .conoceme-overlay {
-    font-size: 1.05rem;
-  }
-
-  .about-quote {
-    margin: 90px auto 36px;
-  }
-
-  .about-quote p {
-    font-size: clamp(1.7rem, 8vw, 2.5rem);
-    line-height: 1.16;
-  }
-}
-
-@media (max-width: 640px) {
-  .photo-card {
-    width: min(100%, 320px);
-    height: auto;
-    aspect-ratio: 320 / 430;
-    flex-basis: auto;
-  }
-
-  .software-row {
-    gap: 10px;
-  }
-
-  .software-bar {
-    width: 100%;
-  }
-}
-
-
 </style>
-
-
-
-
 

@@ -53,7 +53,7 @@ function onCtaMove(e: MouseEvent) {
       <p class="roles">
         ILUSTRADORA<br />
         FOTOGRAFA<br />
-        DISENADORA GRAFICA
+        DISEÑADORA GRAFICA
       </p>
       <span class="year">2026</span>
     </section>
