@@ -2,12 +2,12 @@
 import { Card } from "@/components/ui/card"
 
 const projects = [
-  { id: 1, title: "Más", to: { name: "proyecto-kaoka" }, image: "/imagenes/Home/EPV TITU.png" },
-  { id: 2, title: "Más", to: { name: "proyecto-mind-pop" }, image: "/imagenes/Home/EPV TITU.png" },
-  { id: 3, title: "Más", to: { name: "proyecto-crefad" }, image: "/imagenes/Home/EPV TITU.png" },
-  { id: 4, title: "Más", to: { name: "proyecto-comic" }, image: "/imagenes/Home/EPV TITU.png" },
-  { id: 5, title: "Más", to: { name: "proyecto-lavejez" }, image: "/imagenes/Home/EPV TITU.png" },
-  { id: 6, title: "Más", to: { name: "proyecto-loquenosmueve" }, image: "/imagenes/Home/EPV TITU.png" },
+  { id: 1, title: "Más", to: { name: "proyecto-kaoka" }, image: "/imagenes/Proyectos/Kaoka/entera.jpg" },
+  { id: 2, title: "Más", to: { name: "proyecto-mind-pop" }, image: "/imagenes/Proyectos/Mindpop/cartas.jpg" },
+  { id: 3, title: "Más", to: { name: "proyecto-crefad" }, image: "/imagenes/Proyectos/Crefad/mockup.jpg" },
+  { id: 4, title: "Más", to: { name: "proyecto-comic" }, image: "/imagenes/Proyectos/Comic/portada.jpg" },
+  { id: 5, title: "Más", to: { name: "proyecto-lavejez" }, image: "/imagenes/Proyectos/vejez/ombligo.jpg" },
+  { id: 6, title: "Más", to: { name: "proyecto-loquenosmueve" }, image: "/imagenes/Proyectos/Loquenosmueve/Mockupcartel.png" },
 ];
 
 </script>

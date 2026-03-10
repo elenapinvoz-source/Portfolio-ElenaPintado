@@ -58,6 +58,7 @@ const conocemeCards = [
   { key: "ana", label: "ANALÍTICA", img: "/imagenes/Sobremi/azul.jpg" },
   { key: "det", label: "DETALLISTA", img: "/imagenes/Sobremi/libro.jpg" },
   { key: "res", label: "RESOLUTIVA", img: "/imagenes/Sobremi/playa.jpg" },
+  { key: "per", label: "PERFECCIONISTA", img: "/imagenes/Sobremi/cabina.jpg" },
 ];
 
 
@@ -68,7 +69,7 @@ const conocemeCards = [
     <section class="about-content">
       <Card class="photo-card">
         <img
-          src="/imagenes/Home/PORTFOLIO%201.png"
+          src="/imagenes/Sobremi/platobien.jpg"
           alt="Elena Pintado"
           class="photo-image"
         />
@@ -306,7 +307,7 @@ const conocemeCards = [
 
 .conoceme-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   width: 100%;
 }
 
@@ -334,7 +335,7 @@ const conocemeCards = [
   place-items: center;
   background: rgba(0, 0, 0, 0.42);
   color: #fff;
-  font-size: 1.35rem;
+  font-size: 1.06rem;
   font-weight: 700;
   letter-spacing: 0.02em;
   opacity: 0;
