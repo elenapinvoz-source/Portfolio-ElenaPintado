@@ -117,9 +117,9 @@ const heroTitle = "/imagenes/Proyectos/Crefad/logos.gif";
         </h3>
 
         <div class="space-y-1 text-sm uppercase leading-tight">
-          <p>Alba Cardona Tudela</p>
+          <p>Alba Cardona</p>
           <p>Cristina Cervera</p>
-          <p>Elena Pintado Vozmediano</p>
+          <p>Elena Pintado</p>
         </div>
       </CardContent>
     </Card>
