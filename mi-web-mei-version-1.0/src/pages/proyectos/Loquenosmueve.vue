@@ -7,9 +7,6 @@ import { Button } from "@/components/ui/button";
 
 const youtubeVideoId = "zsKziSdCnTo";
 
-// Definimos smallImages para que no de error el v-for de abajo
-const smallImages: string[] = []; 
-
 const largeImages = [
   "/imagenes/Proyectos/Loquenosmueve/Mockupcartel.png",
   "/imagenes/Proyectos/Loquenosmueve/carteles.gif",
@@ -66,7 +63,8 @@ const heroTitle = "/imagenes/Proyectos/Loquenosmueve/LQNM.gif";
             allowfullscreen
           ></iframe>
         </div>
-      </div> <div class="mt-20 space-y-8">
+      </div> 
+      <div class="mt-20 space-y-8">
         <Card v-for="image in largeImages" :key="image" class="overflow-hidden rounded-none border-0 bg-transparent shadow-none">
           <CardContent class="p-0">
             <img :src="image" alt="Mockup" class="block w-full object-cover" />
