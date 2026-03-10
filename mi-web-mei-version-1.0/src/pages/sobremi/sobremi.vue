@@ -66,8 +66,8 @@ const conocemeCards = [
     class="bg-white px-[26px] pt-10 pb-[90px] text-[#111] max-[980px]:px-[18px] max-[980px]:pt-[26px] max-[980px]:pb-[56px]"
   >
     <section
-      class="mt-[10px] ml-10 flex items-start justify-center gap-[22px] max-[980px]:ml-0 max-[980px]:flex-col max-[980px]:gap-4"
-    >
+      class="mt-[10px] ml-10 flex items-start justify-center gap-[22px] max-[980px]:ml-0 max-[980px]:flex-col max-[980px]:items-center max-[980px]:gap-8">
+
       <Card
         class="h-[430px] w-[320px] flex-none overflow-hidden rounded-none border border-[#111] bg-white p-0 shadow-none max-[640px]:h-auto max-[640px]:w-full max-[640px]:max-w-[320px] max-[640px]:basis-auto max-[640px]:aspect-[320/430]"
       >
@@ -162,7 +162,7 @@ const conocemeCards = [
         class="mx-auto w-[1042px] max-w-[calc(100%-52px)] max-[980px]:w-full max-[980px]:max-w-full"
       >
         <h3
-          class="mb-[60px] ml-[60px] inline-flex items-center gap-2 text-[2.1rem] font-bold max-[980px]:mb-8 max-[980px]:ml-0 max-[980px]:gap-[6px] max-[980px]:text-[1.4rem]"
+          class="mb-[60px] inline-flex items-center gap-2 text-[2.1rem] font-bold max-[980px]:mb-8 max-[980px]:ml-0 max-[980px]:gap-[6px] max-[980px]:text-[1.4rem]"
         >
           HAZ CLICK PARA CONOCERME
           <ArrowDownRight :size="40" class="max-[980px]:h-8 max-[980px]:w-8" />
@@ -170,7 +170,7 @@ const conocemeCards = [
       </div>
 
       <div class="ml-[calc(50%-50vw)] w-screen">
-        <div class="grid w-full grid-cols-6 max-[980px]:grid-cols-2">
+        <div class="grid w-full grid-cols-6 max-[980px]:grid-cols-3 max-[640px]:grid-cols-2 max-[420px]:grid-cols-1">
           <div
             v-for="card in conocemeCards"
             :key="card.key"
@@ -195,13 +195,10 @@ const conocemeCards = [
       class="mx-auto mt-[155px] mb-[95px] max-w-[980px] text-center max-[980px]:mt-[90px] max-[980px]:mb-9"
     >
       <p
-        class="m-0 text-[3.4rem] font-normal italic leading-[1.2] tracking-[-0.015em] max-[980px]:text-[clamp(1.7rem,8vw,2.5rem)] max-[980px]:leading-[1.16]"
+        class="m-0 text-[clamp(1.7rem,5.2vw,3.4rem)] font-normal italic leading-[1.2] tracking-[-0.015em] [text-wrap:balance] max-[980px]:leading-[1.16]"
       >
-        MI CABEZA NUNCA SE CALLA Y POR<br />
-        ESO DISEÑO. CADA PROYECTO PASA<br />
-        POR MIL FILTROS HASTA QUE<br />
-        ENCUENTRO ESA VOZ AUTÉNTICA<br />
-        QUE ESTABAS BUSCANDO.
+        MI CABEZA NUNCA SE CALLA Y POR ESO DISEÑO. CADA PROYECTO PASA POR MIL
+        FILTROS HASTA QUE ENCUENTRO ESA VOZ AUTÉNTICA QUE ESTABAS&nbsp;BUSCANDO.
       </p>
     </section>
   </section>

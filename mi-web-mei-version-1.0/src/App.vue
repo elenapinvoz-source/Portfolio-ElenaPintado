@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import { RouterLink, RouterView } from "vue-router";
-import { Instagram, Mail } from "lucide-vue-next";
+import { Instagram, Mail, Menu, X } from "lucide-vue-next";
 
 const mainNav = [
   { to: "/", label: "INICIO" },
@@ -11,6 +12,8 @@ const mainNav = [
 const instagramUser = "@elsbydesign";
 const instagramUrl = "https://instagram.com/elsbydesign";
 const email = "elenapinvoz@gmail.com";
+
+const mobileOpen = ref(false);
 
 </script>
 
@@ -31,7 +34,60 @@ const email = "elenapinvoz@gmail.com";
       </nav>
 
       <RouterLink to="/contacto" class="contact-btn">CONTÁCTAME</RouterLink>
+
+      <button
+        class="burger"
+        type="button"
+        aria-label="Abrir menú"
+        aria-controls="mobile-menu"
+        :aria-expanded="mobileOpen"
+        @click="mobileOpen = true"
+      >
+        <Menu :size="22" />
+      </button>
     </header>
+
+    <div
+      v-if="mobileOpen"
+      class="mobile-overlay"
+      aria-hidden="true"
+      @click="mobileOpen = false"
+    ></div>
+
+    <aside
+      id="mobile-menu"
+      class="mobile-drawer"
+      :class="{ 'is-open': mobileOpen }"
+      aria-label="Menú móvil"
+      :aria-hidden="!mobileOpen"
+    >
+      <button
+        class="drawer-close"
+        type="button"
+        aria-label="Cerrar menú"
+        @click="mobileOpen = false"
+      >
+        <X :size="22" />
+      </button>
+
+      <RouterLink
+        v-for="item in mainNav"
+        :key="item.to"
+        :to="item.to"
+        class="drawer-link"
+        @click="mobileOpen = false"
+      >
+        {{ item.label }}
+      </RouterLink>
+
+      <RouterLink
+        to="/contacto"
+        class="drawer-cta"
+        @click="mobileOpen = false"
+      >
+        CONTÁCTAME
+      </RouterLink>
+    </aside>
 
     <main class="app-main">
       <RouterView />
@@ -121,6 +177,101 @@ const email = "elenapinvoz@gmail.com";
   align-items: center;
   font-size: clamp(0.78rem, 1.5vw, 1.2rem);
   white-space: nowrap;
+}
+
+.burger {
+  display: none;
+  justify-self: end;
+  grid-column: 3;
+  width: 44px;
+  height: 44px;
+  border:0;
+  background: transparent;
+  border-radius:0;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 50;
+}
+
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(86vw, 340px);
+  height: 100vh;
+  background: #fff;
+  border-left: 1px solid rgba(17, 17, 17, 0.15);
+  transform: translateX(100%);
+  transition: transform 0.2s ease;
+  z-index: 60;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mobile-drawer.is-open {
+  transform: translateX(0);
+}
+
+.drawer-close {
+  align-self: flex-end;
+  width: 44px;
+  height: 44px;
+  border:0;
+  background: transparent;
+  border-radius:0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drawer-link {
+  text-decoration: none;
+  color: #111;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  padding: 10px 6px;
+  transition: opacity .15s ease, transform .15s ease;
+}
+
+.drawer-link:hover{
+  opacity: .65;
+  transform: translateX(2px);
+}
+
+.drawer-cta {
+  margin-top: auto;
+  text-decoration: none;
+  background: #111;
+  color: #fff;
+  border-radius: 9999px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .15s ease;
+}
+
+.drawer-cta:hover{ 
+  opacity: .85; 
+}
+
+@media (max-width: 980px) {
+  .menu-pill,
+  .contact-btn {
+    display: none;
+  }
+
+  .burger {
+    display: inline-flex;
+  }
 }
 
 .app-footer {
